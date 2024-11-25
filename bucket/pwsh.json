@@ -41,9 +41,16 @@
         "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
         "    }",
         "}",
+        "# 上下文菜单等",
         "reg import $dir\\install-explorer-context.reg",
         "reg import $dir\\install-file-context.reg",
-        "# TODO:安装pwsh模块，用chezmoi管理配置"
+        "# 将 PowerShell 库注册为受信任的存储库",
+        "Set-PSRepository -Name PSGallery -InstallationPolicy Trusted",
+        "# https://github.com/devblackops/Terminal-Icons",
+        "Install-Module -Name Terminal-Icons -Repository PSGallery -Force -Verbose",
+        "Install-Module scoop-completion",
+        "# 重新加载配置文件使更改生效",
+        ". $PROFILE"
     ],
     "bin": "pwsh.exe",
     "shortcuts": [
