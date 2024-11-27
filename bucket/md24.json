@@ -1,0 +1,47 @@
+{
+    "version": "24.2.73",
+    "description": "test",
+    "homepage": "https://example.org",
+    "license": "Unlicense",
+    "url": [
+        "https://github.com/ChuckieChen945/placeholder/releases/download/v24/md24.2.73.7z",
+        "https://github.com/user-attachments/files/17935722/md24.2.73_files.zip"
+    ],
+    "hash": [
+        "fb81d05eee4792eb0b3ce8b882da674a8f7874037b4d1be246fc67b9cfc5440f",
+        "23afd512582474a97a64f2d8243f501d0ca33f15649b97371637c589fd14591e"
+    ],
+    "extract_to": [
+        "",
+        "files"
+    ],
+    "installer": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "# 开始安装",
+            "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -Args '/S'",
+            "$targetFile = \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\\hasp_windows_x64_94691.dll\"",
+            "while (-not (Test-Path $targetFile)) {",
+            "    Start-Sleep -Seconds 5",
+            "}",
+            "# 拷贝文件",
+            "$sourceDir = \"$dir\\files\"",
+            "$destinationDir = \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\"",
+            "Get-ChildItem -Path $sourceDir -File | ForEach-Object {",
+            "    Copy-Item -Path $_.FullName -Destination $destinationDir -Force",
+            "    Write-Host \"Copied file: $($_.FullName) to $destinationDir\"",
+            "}"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "Start-Process \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\\Uninstall.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -Args '/S'",
+            "$targetFile = \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\\hasp_windows_x64_94691.dll\"",
+            "while (Test-Path $targetFile) {",
+            "    Start-Sleep -Seconds 5",
+            "}"
+        ]
+    },
+    "##": "下载文件名： md24#24.2.73#e512f00.7z"
+}
