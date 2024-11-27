@@ -1,7 +1,7 @@
 {
     "version": "2024",
     "url": "http://officecdn.microsoft.com/pr/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/zh-cn/ProPlus2024Retail.img#/ProPlus2024Retail.7z",
-    "depends": "okibcn_ScoopMaster/kms-vl-all-aio_cc713",
+    "depends": "anderlli0053_DEV-tools/kms-vl-all-aio_cc713",
     "notes": [
         "未找到方法关闭安装界面，但命令行部分正常返回，安装过程一切正常",
         "未实现命令行卸载，需手动卸载"
