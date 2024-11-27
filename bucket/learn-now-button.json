@@ -1,17 +1,15 @@
 {
     "version": "0.0.1",
-    "description": "Custom Keyboard Shortcuts for Anki 2.1",
-    "homepage": "https://ankiweb.net/shared/info/24411424",
-    "license": {
-        "identifier": "MIT License"
-    },
-    "url": "https://github.com/Liresol/anki-custom-shortcuts/archive/refs/heads/master.zip",
-    "hash":"223080c3bacb4693943634c10de65590037f237a1aefb46435188ea3122dd236",
+    "description": "🍝 Put cards in the learning queue and answer cards from the Card Browser.",
+    "homepage": "https://ankiweb.net/shared/info/1021636467",
+    "license": "AGPL-3.0 license",
+    "url": "https://github.com/Ajatt-Tools/learn-now-button/archive/refs/heads/main.zip",
+    "hash":"4a9a9c55d3a75d1fd40d9a231cc4edc08c3c1e694a73d1e04accbd5db1f69c45",
+    "extract_dir":"learn-now-button-main",
     "depends": [
         "extras/anki",
         "main/recycle-bin"
     ],
-    "extract_dir":"anki-custom-shortcuts-master/custom_shortcuts",
     "installer": {
         "script": [
             "Copy-Item -Path $dir -Destination \"$env:USERPROFILE\\scoop\\persist\\anki\\data\\addons21\\$app\" -Recurse -ErrorAction SilentlyContinue"

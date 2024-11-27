@@ -1,0 +1,24 @@
+{
+    "##": [
+        "从官网自动获取key并下载的方法参见：",
+        "https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=pureref"
+    ],
+    "version": "2.0.3",
+    "description": "Simple and lightweight tool for artists to organize and view reference images",
+    "homepage": "https://www.pureref.com/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.pureref.com/support.php"
+    },
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "url": "https://download.filepuma.com/files/photos-and-images/pureref-64bit-/PureRef_(64bit)_v2.0.3.exe#/pureref.zip",
+    "bin": "PureRef.exe",
+    "shortcuts": [
+        [
+            "PureRef.exe",
+            "PureRef"
+        ]
+    ]
+}

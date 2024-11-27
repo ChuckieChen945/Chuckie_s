@@ -1,5 +1,4 @@
 {
-    "##": "此版本经过了一些个性化配置",
     "version": "7.4.6",
     "description": "Cross-platform automation and configuration tool/framework, known as Powershell Core, that works well with existing tools and is optimized for dealing with structured data.",
     "homepage": "https://github.com/PowerShell/PowerShell",
@@ -9,7 +8,11 @@
         "run `scoop update pwsh` from Windows PowerShell, i.e. powershell.exe.",
         "",
         "Add PowerShell Core as a explorer context menu by running: '$dir\\install-explorer-context.reg'",
-        "For file context menu, run '$dir\\install-file-context.reg'"
+        "For file context menu, run '$dir\\install-file-context.reg'",
+        "此版本经过了一些个性化配置"
+    ],
+    "depends":[
+        "extras/terminal-icons"
     ],
     "architecture": {
         "64bit": {
@@ -43,14 +46,7 @@
         "}",
         "# 上下文菜单等",
         "reg import $dir\\install-explorer-context.reg",
-        "reg import $dir\\install-file-context.reg",
-        "# 将 PowerShell 库注册为受信任的存储库",
-        "Set-PSRepository -Name PSGallery -InstallationPolicy Trusted",
-        "# https://github.com/devblackops/Terminal-Icons",
-        "Install-Module -Name Terminal-Icons -Repository PSGallery -Force -Verbose",
-        "Install-Module scoop-completion",
-        "# 重新加载配置文件使更改生效",
-        ". $PROFILE"
+        "reg import $dir\\install-file-context.reg"
     ],
     "bin": "pwsh.exe",
     "shortcuts": [
