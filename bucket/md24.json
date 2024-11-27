@@ -1,8 +1,5 @@
 {
     "version": "24.2.73",
-    "description": "test",
-    "homepage": "https://example.org",
-    "license": "Unlicense",
     "url": [
         "https://github.com/ChuckieChen945/placeholder/releases/download/v24/md24.2.73.7z",
         "https://github.com/user-attachments/files/17935722/md24.2.73_files.zip"
@@ -19,7 +16,8 @@
         "script": [
             "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
             "# 开始安装",
-            "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -Args '/S'",
+            "$process = Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -Args '/S'",
+            "if ($process.ExitCode -ne 0) { error \"$cmd 程序异常退出\"; break }",
             "$targetFile = \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\\hasp_windows_x64_94691.dll\"",
             "while (-not (Test-Path $targetFile)) {",
             "    Start-Sleep -Seconds 5",
@@ -30,13 +28,15 @@
             "Get-ChildItem -Path $sourceDir -File | ForEach-Object {",
             "    Copy-Item -Path $_.FullName -Destination $destinationDir -Force",
             "    Write-Host \"Copied file: $($_.FullName) to $destinationDir\"",
-            "}"
+            "}",
+            "Get-ChildItem -Path $dir -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue -Recurse"
         ]
     },
     "uninstaller": {
         "script": [
             "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-            "Start-Process \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\\Uninstall.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -Args '/S'",
+            "$process = Start-Process \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\\Uninstall.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -Args '/S'",
+            "if ($process.ExitCode -ne 0) { error \"$cmd 程序异常退出\"; break }",
             "$targetFile = \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\\hasp_windows_x64_94691.dll\"",
             "while (Test-Path $targetFile) {",
             "    Start-Sleep -Seconds 5",

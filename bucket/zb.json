@@ -1,0 +1,49 @@
+{
+    "version": "25.0.1",
+    "url": [
+        "https://github.com/ChuckieChen945/placeholder/releases/download/v25/zb25.0.1.7z.001",
+        "https://github.com/ChuckieChen945/placeholder/releases/download/v25/zb25.0.1.7z.002",
+        "https://github.com/user-attachments/files/17938338/zb25.0.1_files.7z.001.zip#/zb25.0.1_files.7z.001",
+        "https://github.com/user-attachments/files/17938352/zb25.0.1_files.7z.002.zip#/zb25.0.1_files.7z.002"
+    ],
+    "hash": [
+        "177591d808bc1962137ef64a641303c7b651d2b91f4001878d3ff603f9ecea8e",
+        "1e10799d06ba0ea7d8d33a9022d0d2cbfef718b52832837b5cc076733c847939",
+        "6b59f3cdc763209bd11636718287414c15c65ede909bd70c7181dff3dfecaeac",
+        "8facc15daf788fa82d5e9ba031f006c83b1d5d7770bab35a96da65a9de668c09"
+    ],
+    "extract_to": [
+        "",
+        "files"
+    ],
+    "installer": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "# 开始安装",
+            "$process = Start-Process \"$dir\\Setup.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList '--mode unattended --unattendedmodeui minimal --installer-language zh_CN'",
+            "if ($process.ExitCode -ne 0) { error \"$cmd 程序异常退出\"; break }",
+            "# 拷贝文件",
+            "$sourceDir = \"$dir\\files\"",
+            "$destinationDir = \"$env:ProgramFiles\\Maxon ZBrush 2025\"",
+            "Get-ChildItem -Path $sourceDir -File | ForEach-Object {",
+            "    Copy-Item -Path $_.FullName -Destination $destinationDir -Force",
+            "    Write-Host \"Copied file: $($_.FullName) to $destinationDir\"",
+            "}",
+            "# 删除安装程序解压生成的文件及安装程序",
+            "Get-ChildItem -Path $dir -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue -Recurse"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "$process = Start-Process \"$env:ProgramFiles\\Maxon ZBrush 2025\\Uninstall\\Uninstall Maxon ZBrush.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList '--mode unattended --unattendedmodeui minimal --installer-language zh_CN'",
+            "if ($process.ExitCode -ne 0) { error \"$cmd 程序异常退出\"; break }"
+        ]
+    },
+    "##": [
+        "zb#25.0.1#c6fcd40.001",
+        "zb#25.0.1#ed6cdc3.002",
+        "zb#25.0.1#e099a61.001",
+        "zb#25.0.1#237e34b.002"
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "version": "2024",
+    "url": "http://officecdn.microsoft.com/pr/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/zh-cn/ProPlus2024Retail.img#/ProPlus2024Retail.7z",
+    "depends": "okibcn_ScoopMaster/kms-vl-all-aio_cc713",
+    "notes": [
+        "未找到方法关闭安装界面，但命令行部分正常返回，安装过程一切正常",
+        "未实现命令行卸载，需手动卸载"
+    ],
+    "installer": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "# 开始安装",
+            "$process = Start-Process \"$dir\\Setup.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -Args '/Q'",
+            "if ($process.ExitCode -ne 0) { error \"$cmd 程序异常退出\"; break }",
+            "KMS_VL_ALL_AIO /a | Out-Null",
+            "Get-ChildItem -Path $dir -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue -Recurse"
+        ]
+    },
+    "##": [
+        "of#2024#89ff55a.7z",
+        "TODO:hash"
+    ]
+}

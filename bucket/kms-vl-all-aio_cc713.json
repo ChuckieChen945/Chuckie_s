@@ -6,15 +6,11 @@
     "url": "https://github.com/abbodi1406/KMS_VL_ALL_AIO/releases/download/v0.53.0/KMS_VL_ALL_AIO-53.7z#/dl-pw1234.7z_",
     "notes": [
         "Some of the antivirus softwares (e.g. Windows Defender) may detect the app as a malware.",
-        "In this case, close the antivirus protection before using it.",
-        "这个版本安装后会自动运行激活脚本"
+        "In this case, close the antivirus protection before using it."
     ],
     "pre_install": [
         "$pw = $fname.Replace('dl-pw', '').Replace('.7z_', '')",
         "Expand-7zipArchive \"$dir\\$fname\" \"$dir\" -Switches \"-p$pw\" -Removal | Out-Null"
-    ],
-    "post_install":[
-        "KMS_VL_ALL_AIO /a"
     ],
     "hash": "dd4fcbaa062ced1662b99b89a00644c7e48ac29e7b8007e4ab7677e089d273f7",
     "bin": "KMS_VL_ALL_AIO.cmd",
