@@ -2,7 +2,7 @@
     "version": "24.2.73",
     "url": [
         "https://github.com/ChuckieChen945/placeholder/releases/download/v24/md24.2.73.7z",
-        "https://github.com/user-attachments/files/17935722/md24.2.73_files.zip"
+        "https://github.com/user-attachments/files/17935722/md24.2.73_files.zip#/md24#24.2.73#e296607.zip"
     ],
     "hash": [
         "fb81d05eee4792eb0b3ce8b882da674a8f7874037b4d1be246fc67b9cfc5440f",
@@ -12,39 +12,30 @@
         "",
         "files"
     ],
+    "pre_install": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }"
+    ],
     "installer": {
-        "script": [
-            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-            "# 开始安装",
-            "$process = Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -Args '/S'",
-            "if ($process.ExitCode -ne 0) { error \"$cmd 程序异常退出\"; break }",
-            "$targetFile = \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\\hasp_windows_x64_94691.dll\"",
-            "while (-not (Test-Path $targetFile)) {",
-            "    Start-Sleep -Seconds 5",
-            "}",
-            "# 拷贝文件",
-            "$sourceDir = \"$dir\\files\"",
-            "$destinationDir = \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\"",
-            "Get-ChildItem -Path $sourceDir -File | ForEach-Object {",
-            "    Copy-Item -Path $_.FullName -Destination $destinationDir -Force",
-            "    Write-Host \"Copied file: $($_.FullName) to $destinationDir\"",
-            "}",
-            "Get-ChildItem -Path $dir -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue -Recurse"
-        ]
+        "file": "Setup.exe",
+        "args": "/S"
     },
+    "post_install": [
+        "$sourceDir = \"$dir\\files\"",
+        "$destinationDir = \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\"",
+        "Write-Host \"\\n\"",
+        "Get-ChildItem -Path $sourceDir -File | ForEach-Object {",
+        "    Copy-Item -Path $_.FullName -Destination $destinationDir -Force",
+        "    Write-Host \"Copied file: $($_.FullName) to $destinationDir\"",
+        "}",
+        "Get-ChildItem -Path $dir -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue -Recurse"
+    ],
     "uninstaller": {
         "script": [
-            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-            "$process = Start-Process \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\\Uninstall.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -Args '/S'",
-            "if ($process.ExitCode -ne 0) { error \"$cmd 程序异常退出\"; break }",
-            "$targetFile = \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\\hasp_windows_x64_94691.dll\"",
-            "while (Test-Path $targetFile) {",
-            "    Start-Sleep -Seconds 5",
-            "}"
+            "$process = Start-Process \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\\Uninstall.exe\" -PassThru -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList '/S'",
+            "if ($process.ExitCode -ne 0) { error \"$cmd Exit Code: $process.ExitCode\"; break }"
         ]
     },
     "##": [
-        "md24#24.2.73#e512f00.7z",
-        "md24#24.2.73#5876d6d.zip"
+        "md24#24.2.73#e512f00.7z"
     ]
 }

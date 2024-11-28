@@ -16,6 +16,9 @@
             "Copy-Item -Path $dir -Destination \"$env:USERPROFILE\\scoop\\persist\\anki\\data\\addons21\\$app\" -Recurse -ErrorAction SilentlyContinue"
         ]
     },
+    "post_install":[
+            "Get-ChildItem -Path $dir -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue -Recurse"
+    ],
     "uninstaller": {
         "script": [
             "recycle-bin \"$env:USERPROFILE\\scoop\\persist\\anki\\data\\addons21\\$app\\\""
