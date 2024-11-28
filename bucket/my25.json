@@ -32,7 +32,9 @@
         ]
     },
     "##": [
-        "下载文件名为：my25#25.3#6F8F7FD.7z",
+        "my25#25.3#6F8F7FD.7z",
+        "my25#25.3#1143c0b",
+        "##################"
         "# 各组件在x64目录中，以.msi文件安装",
         "# 在控制面板中卸载组件时运行的命令参考似如注册表项：",
         "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{F11ABB5A-3CE8-4026-8579-A969AB5A0420}]",

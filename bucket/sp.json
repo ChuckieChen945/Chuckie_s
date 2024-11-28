@@ -1,0 +1,53 @@
+{
+    "version": "10.1.0",
+    "url": [
+        "https://karawia.site/Adobe%20Substance%203D%20Painter%2010.1.0%20Multilingual%20x64.zip",
+        "https://github.com/user-attachments/files/17942570/sp10.1.0_files.7z.001.zip#/sp10.1.0_files.7z.001",
+        "https://github.com/user-attachments/files/17942571/sp10.1.0_files.7z.002.zip#/sp10.1.0_files.7z.002",
+        "https://github.com/user-attachments/files/17942572/sp10.1.0_files.7z.003.zip#/sp10.1.0_files.7z.003"
+    ],
+    "hash": [
+        "1f08ad6cad02f88fb3455a2493e8e23e7f49691953bc38012b829e83a601611e",
+        "d28851905ff6925713bc11e3e56c1c31ff5cd4cbf0939a8da895f9c5ecba4d39",
+        "41b32c47981b13da972a18f57dcd4708c7d353452c3a04d960be8c800c2c6e7b",
+        "419d63af6ce171f5de7c4be9b2a20f5c6246bc124f32d192f542c540830015b7"
+    ],
+    "extract_dir": [
+        "Adobe Substance 3D Painter 10.1.0 Multilingual x64",
+        ""
+    ],
+    "extract_to": [
+        "",
+        "files"
+    ],
+    "installer": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "# 开始安装",
+            "$process = Start-Process \"$dir\\Set-up.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList '--silent=1 --lang=zh_CN'",
+            "if ($process.ExitCode -ne 0) { error \"$cmd 程序异常退出\"; break }",
+            "# 拷贝文件",
+            "$sourceDir = \"$dir\\files\"",
+            "$destinationDir = \"$env:ProgramFiles\\Adobe\\Adobe Substance 3D Painter\"",
+            "Get-ChildItem -Path $sourceDir -File | ForEach-Object {",
+            "    Copy-Item -Path $_.FullName -Destination $destinationDir -Force",
+            "    Write-Host \"Copied file: $($_.FullName) to $destinationDir\"",
+            "}",
+            "# 删除安装程序解压生成的文件及安装程序",
+            "Get-ChildItem -Path $dir -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue -Recurse"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "$process = Start-Process \"${env:ProgramFiles(x86)}\\Common Files\\Adobe\\Adobe Desktop Common\\HDBox\\Set-up.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList '--silent=1 --uninstall=1 --sapCode=SBSTP --codexVersion=10.1.1 --productPlatform=win64 --deleteUserPreferences=true'",
+            "if ($process.ExitCode -ne 0) { error \"$cmd 程序异常退出\"; break }"
+        ]
+    },
+    "##": [
+        "sp#10.1.0#52066d9.zip",
+        "sp#10.1.0#1275c48.001",
+        "sp#10.1.0#540d57a.002",
+        "sp#10.1.0#64e7441.003"
+    ]
+}
