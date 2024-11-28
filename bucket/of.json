@@ -1,13 +1,18 @@
 {
     "version": "2024",
-    "url": "http://officecdn.microsoft.com/pr/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/zh-cn/ProPlus2024Retail.img#/ProPlus2024Retail.7z",
-    "hash": "80c812d190c2ea0b8eaac01a6f66e8f03ac2d8708830e224338b74501941959b",
+    "url": [
+        "http://officecdn.microsoft.com/pr/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/zh-cn/ProPlus2024Retail.img#/of#2024#e2081df.7z"
+    ],
+    "hash": [
+        "80c812d190c2ea0b8eaac01a6f66e8f03ac2d8708830e224338b74501941959b"
+    ],
     "depends": "anderlli0053_DEV-tools/kms-vl-all-aio_cc713",
     "notes": [
         "未实现命令行卸载，需手动卸载"
     ],
     "extract_dir": [
-        "Office"
+        "Office",
+        ""
     ],
     "pre_install": [
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
@@ -19,7 +24,7 @@
         "file": "Setup64.exe",
         "args": [
             "/configure",
-            "config.xml"
+            "$dir\\config.xml"
         ]
     },
     "post_install": [
@@ -27,7 +32,6 @@
         "Get-ChildItem -Path $dir -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue -Recurse"
     ],
     "##": [
-        "of#2024#89ff55a.7z",
         "https://learn.microsoft.com/en-us/microsoft-365-apps/deploy/office-deployment-tool-configuration-options"
     ]
 }

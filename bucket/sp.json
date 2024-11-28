@@ -42,7 +42,7 @@
         "Get-ChildItem -Path $dir -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue -Recurse"
     ],
     "pre_uninstall": [
-        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }"
     ],
     "uninstaller": {
         "script": [
