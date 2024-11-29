@@ -1,10 +1,10 @@
 {
     "version": "25.0.1",
     "url": [
-        "https://github.com/ChuckieChen945/placeholder/releases/download/v25/zb25.0.1.7z.001",
-        "https://github.com/ChuckieChen945/placeholder/releases/download/v25/zb25.0.1.7z.002",
-        "https://github.com/user-attachments/files/17938338/zb25.0.1_files.7z.001.zip#/zb25.0.1_files.7z.001",
-        "https://github.com/user-attachments/files/17938352/zb25.0.1_files.7z.002.zip#/zb25.0.1_files.7z.002"
+        "http://github.com/tfJp/t/releases/download/4/zb.25.0.1.001#/zb#25.0.1#1d25099.001/a.001",
+        "http://github.com/tfJp/t/releases/download/4/zb.25.0.1.002#/zb#25.0.1#2eea090.002/a.002",
+        "https://github.com/user-attachments/files/17938338/zb25.0.1_files.7z.001.zip#/zb#25.0.1#90893a0.001/a.001",
+        "https://github.com/user-attachments/files/17938352/zb25.0.1_files.7z.002.zip#/zb#25.0.1#cf7c770.002/a.002"
     ],
     "hash": [
         "177591d808bc1962137ef64a641303c7b651d2b91f4001878d3ff603f9ecea8e",
@@ -44,11 +44,5 @@
             "$process = Start-Process \"$env:ProgramFiles\\Maxon ZBrush 2025\\Uninstall\\Uninstall Maxon ZBrush.exe\" -PassThru -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList '--mode unattended --unattendedmodeui none --installer-language zh_CN'",
             "if ($process.ExitCode -ne 0) { error \"$cmd Exit Code: $process.ExitCode\"; break }"
         ]
-    },
-    "##": [
-        "zb#25.0.1#c6fcd40.001",
-        "zb#25.0.1#ed6cdc3.002",
-        "zb#25.0.1#e099a61.001",
-        "zb#25.0.1#237e34b.002"
-    ]
+    }
 }

@@ -1,7 +1,7 @@
 {
     "version": "24.2.73",
     "url": [
-        "https://github.com/ChuckieChen945/placeholder/releases/download/v24/md24.2.73.7z",
+        "https://github.com/tfJp/t/releases/download/4/md24.24.2.73.zip#/md24#24.2.73#567ac9c.zip",
         "https://github.com/user-attachments/files/17935722/md24.2.73_files.zip#/md24#24.2.73#e296607.zip"
     ],
     "hash": [
@@ -34,8 +34,5 @@
             "$process = Start-Process \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\\Uninstall.exe\" -PassThru -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList '/S'",
             "if ($process.ExitCode -ne 0) { error \"$cmd Exit Code: $process.ExitCode\"; break }"
         ]
-    },
-    "##": [
-        "md24#24.2.73#e512f00.7z"
-    ]
+    }
 }
