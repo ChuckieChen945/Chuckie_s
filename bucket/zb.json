@@ -14,7 +14,7 @@
     ],
     "extract_to": [
         "",
-        "files"
+        "Maxon ZBrush 2025"
     ],
     "pre_install": [
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }"
@@ -27,13 +27,10 @@
         ]
     },
     "post_install": [
-        "$sourceDir = \"$dir\\files\"",
+        "$sourceDir = \"$dir\\Maxon ZBrush 2025\"",
         "$destinationDir = \"$env:ProgramFiles\\Maxon ZBrush 2025\"",
-        "Get-ChildItem -Path $sourceDir -File | ForEach-Object {",
-        "    Copy-Item -Path $_.FullName -Destination $destinationDir -Force",
-        "    Write-Host \"Copied file: $($_.FullName) to $destinationDir\"",
-        "}",
-        "# 删除安装程序解压生成的文件及安装程序",
+        "Copy-Item -Path $sourceDir -Destination $destinationDir -Recurse -Force",
+        "Write-Host \"\nCopied files: $sourceDir to $destinationDir\"",
         "Get-ChildItem -Path $dir -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue -Recurse"
     ],
     "pre_uninstall": [
@@ -41,8 +38,7 @@
     ],
     "uninstaller": {
         "script": [
-            "$process = Start-Process \"$env:ProgramFiles\\Maxon ZBrush 2025\\Uninstall\\Uninstall Maxon ZBrush.exe\" -PassThru -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList '--mode unattended --unattendedmodeui none --installer-language zh_CN'",
-            "if ($process.ExitCode -ne 0) { error \"$cmd Exit Code: $process.ExitCode\"; break }"
+            "Invoke-ExternalCommand \"$env:ProgramFiles\\Maxon ZBrush 2025\\Uninstall\\Uninstall Maxon ZBrush.exe\" -RunAs -ArgumentList @('--mode', 'unattended', '--unattendedmodeui', 'none', '--installer-language', 'zh_CN')"
         ]
     }
 }

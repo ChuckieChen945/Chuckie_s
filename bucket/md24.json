@@ -10,7 +10,7 @@
     ],
     "extract_to": [
         "",
-        "files"
+        "Marvelous Designer Enterprise OnlineAuth"
     ],
     "pre_install": [
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }"
@@ -20,19 +20,15 @@
         "args": "/S"
     },
     "post_install": [
-        "$sourceDir = \"$dir\\files\"",
+        "$sourceDir = \"$dir\\Marvelous Designer Enterprise OnlineAuth\"",
         "$destinationDir = \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\"",
-        "Write-Host \"\\n\"",
-        "Get-ChildItem -Path $sourceDir -File | ForEach-Object {",
-        "    Copy-Item -Path $_.FullName -Destination $destinationDir -Force",
-        "    Write-Host \"Copied file: $($_.FullName) to $destinationDir\"",
-        "}",
+        "Copy-Item -Path $sourceDir -Destination $destinationDir -Recurse -Force",
+        "Write-Host \"\nCopied files: $sourceDir to $destinationDir\"",
         "Get-ChildItem -Path $dir -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue -Recurse"
     ],
     "uninstaller": {
         "script": [
-            "$process = Start-Process \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\\Uninstall.exe\" -PassThru -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList '/S'",
-            "if ($process.ExitCode -ne 0) { error \"$cmd Exit Code: $process.ExitCode\"; break }"
+            "Invoke-ExternalCommand \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\\Uninstall.exe\" -RunAs -ArgumentList @('/S')"
         ]
     }
 }

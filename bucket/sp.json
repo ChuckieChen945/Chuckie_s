@@ -18,7 +18,7 @@
     ],
     "extract_to": [
         "",
-        "files"
+        "Adobe Substance 3D Painter"
     ],
     "pre_install": [
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }"
@@ -31,14 +31,10 @@
         ]
     },
     "post_install": [
-        "$sourceDir = \"$dir\\files\"",
+        "$sourceDir = \"$dir\\Adobe Substance 3D Painter\"",
         "$destinationDir = \"$env:ProgramFiles\\Adobe\\Adobe Substance 3D Painter\"",
-        "Write-Host \"\\n\"",
-        "Get-ChildItem -Path $sourceDir -File | ForEach-Object {",
-        "    Copy-Item -Path $_.FullName -Destination $destinationDir -Force",
-        "    Write-Host \"Copied file: $($_.FullName) to $destinationDir\"",
-        "}",
-        "# 删除安装程序解压生成的文件及安装程序",
+        "Copy-Item -Path $sourceDir -Destination $destinationDir -Recurse -Force",
+        "Write-Host \"\nCopied files: $sourceDir to $destinationDir\"",
         "Get-ChildItem -Path $dir -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue -Recurse"
     ],
     "pre_uninstall": [
@@ -47,14 +43,7 @@
     "uninstaller": {
         "script": [
             "# 备注：这里--codexVersion=10.0.0，不是10.1.0",
-            "$process = Start-Process \"${env:ProgramFiles(x86)}\\Common Files\\Adobe\\Adobe Desktop Common\\HDBox\\Set-up.exe\" -PassThru -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList '--silent=1 --uninstall=1 --sapCode=SBSTP --codexVersion=10.0.0 --productPlatform=win64 --deleteUserPreferences=true'",
-            "if ($process.ExitCode -ne 0) { error \"$cmd Exit Code: $process.ExitCode\"; break }"
+            "Invoke-ExternalCommand \"${env:ProgramFiles(x86)}\\Common Files\\Adobe\\Adobe Desktop Common\\HDBox\\Set-up.exe\" -RunAs -ArgumentList @('--silent=1', '--uninstall=1', '--sapCode=SBSTP', '--codexVersion=10.0.0', '--productPlatform=win64', '--deleteUserPreferences=true')"
         ]
-    },
-    "##": [
-        "sp#10.1.0#52066d9.zip",
-        "sp#10.1.0#1275c48.001",
-        "sp#10.1.0#540d57a.002",
-        "sp#10.1.0#64e7441.003"
-    ]
+    }
 }
