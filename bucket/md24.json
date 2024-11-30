@@ -21,7 +21,7 @@
     },
     "post_install": [
         "$sourceDir = \"$dir\\Marvelous Designer Enterprise OnlineAuth\"",
-        "$destinationDir = \"$env:ProgramFiles\\Marvelous Designer Enterprise OnlineAuth\"",
+        "$destinationDir = \"$env:ProgramFiles\\\"",
         "Copy-Item -Path $sourceDir -Destination $destinationDir -Recurse -Force",
         "Write-Host \"\nCopied files: $sourceDir to $destinationDir\"",
         "Get-ChildItem -Path $dir -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue -Recurse"
