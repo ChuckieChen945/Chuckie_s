@@ -17,7 +17,8 @@
         "# 设置开机启动",
         "$sourceDir = \"$dir\\enhancer.ahk\"",
         "$destinationDir = \"$env:ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\"",
-        "Copy-Item -Path $sourceDir -Destination $destinationDir -Force"
+        "Copy-Item -Path $sourceDir -Destination $destinationDir -Force",
+        "Get-ChildItem -Path $dir -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue -Recurse"
     ],
     "bin": [
         "enhancer.ahk"

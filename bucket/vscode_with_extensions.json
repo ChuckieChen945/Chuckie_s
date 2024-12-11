@@ -19,5 +19,8 @@
             "7z a -tzip \"$dir\\chuckie_s-vscod-extension-pack.vsix\" \"$dir\\*\" | Out-Null",
             "code --install-extension \"$dir\\chuckie_s-vscod-extension-pack.vsix\" | Out-Null"
         ]
-    }
+    },
+    "post_install": [
+        "Get-ChildItem -Path $dir -Recurse | Remove-Item -Force -ErrorAction SilentlyContinue -Recurse"
+    ]
 }
