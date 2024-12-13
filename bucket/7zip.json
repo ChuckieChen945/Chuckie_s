@@ -39,7 +39,7 @@
         "    }",
         "    Set-Content \"$dir\\$_\" $content -Encoding Ascii",
         "}",
-        "regedit /s \"$env:USERPROFILE\\scoop\\apps\\7zip\\current\\install-context.reg\""
+        "regedit /s \"$(appdir 7zip $global)\\current\\install-context.reg\""
     ],
     "bin": [
         "7z.exe",
