@@ -8,8 +8,7 @@
     "url": "https://github.com/Liresol/anki-custom-shortcuts/archive/refs/heads/master.zip",
     "hash":"223080c3bacb4693943634c10de65590037f237a1aefb46435188ea3122dd236",
     "depends": [
-        "extras/anki",
-        "main/recycle-bin"
+        "extras/anki"
     ],
     "extract_dir":"anki-custom-shortcuts-master/custom_shortcuts",
     "installer": {
