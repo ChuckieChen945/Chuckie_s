@@ -1,8 +1,9 @@
 {
     "##": [
-        "TODO:使用wsldl项目安装",
+        "可选: 使用wsldl项目安装",
         "https://wiki.archlinux.org/title/Install_Arch_Linux_on_WSL",
-        "https://github.com/ubuntu/WSL/blob/main/docs/tutorials/interop.md"
+        "https://github.com/ubuntu/WSL/blob/main/docs/tutorials/interop.md",
+        "https://github.com/ScoopInstaller/Extras/blob/master/bucket/archwsl.json"
     ],
     "version": "0.0.1",
     "description": "安装archlinux",
