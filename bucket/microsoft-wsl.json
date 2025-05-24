@@ -3,13 +3,9 @@
     "description": "启用并更新wsl",
     "homepage": "https://github.com/microsoft/WSL",
     "license": "Freeware",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/microsoft/WSL/releases/download/2.3.26/wsl.2.3.26.0.x64.msi#/wsl.msi_",
-            "hash": "cd3f2a68a1a5836f6a1cc9965a7f5f54db267ca221eaa87df29345ab7957aec4",
-            "checkver": "github"
-        }
-    },
+    "url": "https://github.com/microsoft/WSL/releases/download/2.3.26/wsl.2.3.26.0.x64.msi#/wsl.msi_",
+    "hash": "cd3f2a68a1a5836f6a1cc9965a7f5f54db267ca221eaa87df29345ab7957aec4",
+    "checkver": "github",
     "pre_install": [
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
         "# The LimitAccess parameter prevents access to Windows Update as a Source for restoring features to online images.",
@@ -23,10 +19,6 @@
         ]
     },
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/microsoft/WSL/releases/download/$version/wsl.$version.0.x64.msi#/wsl.msi_"
-            }
-        }
+        "url": "https://github.com/microsoft/WSL/releases/download/$version/wsl.$version.0.x64.msi#/wsl.msi_"
     }
 }
