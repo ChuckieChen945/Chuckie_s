@@ -60,6 +60,8 @@
             "'GitHub.vscode-github-actions'",
             "'tamasfe.even-better-toml'",
             "'ms-python.pylint'",
+            "'kisstkondoros.vscode-gutter-preview'",
+            "'labuladong.leetcode-helper'",
             ")",
             "foreach ($extension in $extensions) {",
             "    code code --install-extension $extension",
