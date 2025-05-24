@@ -10,7 +10,5 @@
         "exit $LASTEXITCODE",
         "'@"
     ],
-    "bin": [
-        "msedge.ps1"
-    ]
+    "bin": ["msedge.ps1"]
 }

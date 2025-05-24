@@ -12,23 +12,14 @@
         "41b32c47981b13da972a18f57dcd4708c7d353452c3a04d960be8c800c2c6e7b",
         "419d63af6ce171f5de7c4be9b2a20f5c6246bc124f32d192f542c540830015b7"
     ],
-    "extract_dir": [
-        "Adobe Substance 3D Painter 10.1.0 Multilingual x64",
-        ""
-    ],
-    "extract_to": [
-        "",
-        "Adobe Substance 3D Painter"
-    ],
+    "extract_dir": ["Adobe Substance 3D Painter 10.1.0 Multilingual x64", ""],
+    "extract_to": ["", "Adobe Substance 3D Painter"],
     "pre_install": [
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }"
     ],
     "installer": {
         "file": "Set-up.exe",
-        "args": [
-            "--silent=1",
-            "--lang=zh_CN"
-        ]
+        "args": ["--silent=1", "--lang=zh_CN"]
     },
     "post_install": [
         "$sourceDir = \"$dir\\Adobe Substance 3D Painter\"",

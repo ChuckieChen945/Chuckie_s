@@ -24,8 +24,5 @@
             "Invoke-ExternalCommand 'wscript' -RunAs -ArgumentList @(\"$dir\\scripts\\uninstall-all-users.vbs\")"
         ]
     },
-    "persist": [
-        "config-jetbrains",
-        "plugins-jetbrains"
-    ]
+    "persist": ["config-jetbrains", "plugins-jetbrains"]
 }

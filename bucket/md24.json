@@ -14,10 +14,7 @@
         "fb81d05eee4792eb0b3ce8b882da674a8f7874037b4d1be246fc67b9cfc5440f",
         "23afd512582474a97a64f2d8243f501d0ca33f15649b97371637c589fd14591e"
     ],
-    "extract_to": [
-        "",
-        "Marvelous Designer Enterprise OnlineAuth"
-    ],
+    "extract_to": ["", "Marvelous Designer Enterprise OnlineAuth"],
     "pre_install": [
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }"
     ],

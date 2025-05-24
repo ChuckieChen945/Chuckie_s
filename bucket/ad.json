@@ -12,10 +12,7 @@
         "73aed765c11fd9ba50753d3a5930a3fc1e2b77c16413c8ac99740efd179f1ad5",
         "52ac15e382a5d52ac9997622fa9d092a713326f3ac1de0abe096abe9866d52c7"
     ],
-    "extract_to": [
-        "",
-        "Acrobat"
-    ],
+    "extract_to": ["", "Acrobat"],
     "pre_install": [
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }"
     ],
@@ -24,7 +21,7 @@
             "Invoke-ExternalCommand 'msiexec' -RunAs -ArgumentList @('/i', \"$dir\\Setup\\AcroPro.msi\", '/quiet', '/norestart', '/update', \"$dir\\AcrobatDCx64Upd2400220991.msp\")"
         ]
     },
-    "post_install":[
+    "post_install": [
         "$sourceDir = \"$dir\\Acrobat\"",
         "$destinationDir = \"$env:ProgramFiles\\Adobe\\Acrobat DC\\\"",
         "Copy-Item -Path $sourceDir -Destination $destinationDir -Recurse -Force",
