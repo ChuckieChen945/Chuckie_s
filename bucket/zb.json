@@ -1,5 +1,7 @@
 {
     "version": "25.0.1",
+    "homepage": "https://example.com/",
+    "license": "Unknown",
     "url": [
         "http://github.com/tfJp/t/releases/download/4/zb.25.0.1.001#/zb#25.0.1#1d25099.001/a.001",
         "http://github.com/tfJp/t/releases/download/4/zb.25.0.1.002#/zb#25.0.1#2eea090.002/a.002"

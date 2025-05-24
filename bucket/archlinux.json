@@ -8,6 +8,7 @@
     "version": "0.0.1",
     "description": "安装archlinux",
     "homepage": "https://gitlab.archlinux.org/archlinux/archlinux-wsl",
+    "license": "Freeware",
     "depends": "Chuckie_s/microsoft-wsl",
     "architecture": {
         "64bit": {

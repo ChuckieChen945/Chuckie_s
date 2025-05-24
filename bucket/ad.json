@@ -3,6 +3,8 @@
         "https://github.com/farag2/Utilities/blob/master/Download/Acrobat_Pro_DC_x64.ps1",
         "https://github.com/farag2/Adobe-Acrobat-DC-Setup/blob/master/Adobe_Acrobat_Reader_Pro_DC.ps1"
     ],
+    "homepage": "https://example.com/",
+    "license": "Unknown",
     "version": "24.002.20991",
     "url": [
         "http://github.com/tfJp/t/releases/download/4/ad.24.002.20991.7z#/ad#24.002.20991#6c6f26f.7z",
