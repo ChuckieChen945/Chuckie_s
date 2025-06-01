@@ -79,6 +79,7 @@
             "'bierner.markdown-yaml-preamble',",
             "'ms-vscode.wordcount',",
             "'ionutvmi.reg',",
+            "'medo64.highlight-ip',",
             ")",
             "foreach ($extension in $extensions) {",
             "    code --install-extension $extension",
