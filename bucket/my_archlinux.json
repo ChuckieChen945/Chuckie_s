@@ -1,0 +1,59 @@
+{
+    "##": "https://github.com/ubuntu/WSL/blob/main/docs/tutorials/interop.md",
+    "version": "0.0.1",
+    "description": "安装archlinux",
+    "homepage": "https://gitlab.archlinux.org/archlinux/archlinux-wsl",
+    "license": "Freeware",
+    "depends": ["Chuckie_s/microsoft-wsl", "Chuckie_s/wsldl_arch"],
+    "architecture": {
+        "64bit": {
+            "url": "https://mirrors.tuna.tsinghua.edu.cn/archlinux/wsl/latest/archlinux.wsl"
+        }
+    },
+    "pre_install": [
+        "if ($null -eq (Get-Command 'wslconfig' -ErrorAction SilentlyContinue)) {",
+        "    warn 'WSL appears not to be enabled!'",
+        "    warn 'Run ''Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux'''",
+        "    warn 'from an elevated PowerShell. Restart your computer when prompted and reinstall ArchWSL.'",
+        "    error \"$app requires WSL to run\"",
+        "    break",
+        "}"
+    ],
+    "installer": {
+        "script": [
+            "$installable = $true",
+            "& Arch 'isregd'",
+            "if ($?) {",
+            "    Write-Host 'ArchWsl is already registered.'",
+            "    warn 'ArchWsl is already registered'",
+            "    $installable = $false",
+            "}",
+            "if ($installable) {",
+            "if (-not (Test-Path \"$persist_dir\\data\")) {",
+            "    New-Item -ItemType Directory -Path \"$persist_dir\\data\" -Force | Out-Null",
+            "}",
+            "    Copy-Item \"$(appdir wsldl_arch $global)\\current\\Arch.exe\" \"$persist_dir\\data\\Arch.exe\"",
+            "    $res = Invoke-ExternalCommand \"$persist_dir\\data\\Arch.exe\" 'install', \"$dir\\archlinux.wsl\"",
+            "    Remove-Item \"$persist_dir\\data\\Arch.exe\" -Force",
+            "    if(!$res) { error 'ArchWsl installation failed!'; return }",
+            "}",
+            "$wsl_bucketsdir = $bucketsdir.Replace('\\\\', '/') ",
+            "$wsl_bucketsdir = $wsl_bucketsdir.Replace('\\', '/') ",
+            "$wsl_bucketsdir = $wsl_bucketsdir.Replace(':', '/') ",
+            "$wsl_bucketsdir = $wsl_bucketsdir.Substring(0,1).ToLower() + $wsl_bucketsdir.Substring(1)",
+            "wsl -d Arch bash -c \"/mnt/$wsl_bucketsdirChuckie_s/scripts/archlinux/archlinux.sh\""
+        ]
+    },
+    "post_install": [
+        "Remove-Item \"$dir\\archlinux.wsl\" -Force -ErrorAction SilentlyContinue"
+    ],
+    "uninstaller": {
+        "script": [
+            "if ($cmd -ne 'uninstall') { return }",
+            "$res = Invoke-ExternalCommand Arch 'isregd'",
+            "if(!$res) { error 'ArchWsl is not registered!'; return }",
+            "Invoke-ExternalCommand Arch 'clean', '-y' | Out-Null"
+        ]
+    },
+    "persist": "data"
+}
