@@ -3,13 +3,18 @@
     "description": "安装archlinux",
     "homepage": "https://gitlab.archlinux.org/archlinux/archlinux-wsl",
     "license": "Freeware",
-    "depends": ["Chuckie_s/microsoft-wsl", "Chuckie_s/wsldl_arch"],
+    "depends": [
+        "Chuckie_s/microsoft-wsl",
+        "Chuckie_s/wsldl_arch",
+        "main/chezmoi"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://mirrors.tuna.tsinghua.edu.cn/archlinux/wsl/latest/archlinux.wsl"
         }
     },
     "pre_install": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
         "if ($null -eq (Get-Command 'wslconfig' -ErrorAction SilentlyContinue)) {",
         "    warn 'WSL appears not to be enabled!'",
         "    warn 'Run ''Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux'''",
@@ -22,8 +27,8 @@
         "script": [
             "& Arch 'isregd'",
             "if ($?) {",
-            "    Write-Host 'ArchWsl is already registered.'",
-            "    warn 'ArchWsl is already registered'",
+            "    Write-Host 'your customized archlinux is already registered.'",
+            "    warn 'your customized archlinux is already registered'",
             "    break",
             "}",
             "ensure \"$persist_dir\\data\" | Out-Null",
@@ -34,24 +39,9 @@
         ]
     },
     "post_install": [
-        "Remove-Item \"$dir\\archlinux.wsl\" -Force -ErrorAction SilentlyContinue",
-        "function Convert-WindowsPathToWslPath {",
-        "    param (",
-        "        [Parameter(Mandatory)]",
-        "        [string]$WindowsPath",
-        "    )",
-        "    $cleanPath = $WindowsPath.Trim('\"') -replace '\\\\', '/'",
-        "    if ($cleanPath -match '^([A-Za-z]):/(.*)') {",
-        "        $drive = $matches[1].ToLower()",
-        "        $rest = $matches[2]",
-        "        return \"/mnt/$drive/$rest\"",
-        "    } else {",
-        "        throw \"file path not in a valid format (e.g. C:\\path\\to\\file)\"",
-        "    }",
-        "}",
-        "$script_path = Convert-WindowsPathToWslPath \"$bucketsdir\\Chuckie_s\\scripts\\my_archlinux\\init_archlinux.sh\"",
-        "wsl --distribution Arch bash -c $script_path"
+        "Remove-Item \"$dir\\archlinux.wsl\" -Force -ErrorAction SilentlyContinue"
     ],
+    "pre_uninstall": [""],
     "uninstaller": {
         "script": [
             "if ($cmd -ne 'uninstall') { return }",
