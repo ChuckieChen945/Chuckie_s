@@ -4,8 +4,7 @@
     "homepage": "https://fanyi.baidu.com",
     "license": "Unknown",
     "url": "https://fanyiapp.cdn.bcebos.com/fanyi-client/pkg/win/2.0.0/百度翻译_Setup_2.0.0.exe#/setup.exe",
-    "hash": "",
-    "shortcuts": [["百度翻译.exe", "百度翻译"]],
+    "hash": "af0bf0c83a93ea737c5a91f1a03bd29435ca012d8038f7fc5dec4dab5abd5169",
     "installer": {
         "file": "setup.exe",
         "args": "/S"
