@@ -1,0 +1,79 @@
+{
+    "version": "0.0.1",
+    "description": "此包用于 Scoop 开发测试，输出详细的环境变量和上下文信息，帮助理解 Scoop 的工作流程。",
+    "homepage": "https://www.example.com",
+    "license": "MIT",
+    "url": "https://github.com/excitoon/empty/releases/download/empty-1.0.7/empty-1.0.7.zip",
+    "hash": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
+
+    "pre_install": [
+        "Write-Host '--- Stage: Pre-Install ---' -ForegroundColor Green",
+        "Write-Host '🌟 Environment and Context Variables during pre-install:' -ForegroundColor Cyan",
+        "Write-Host \"  • `$version`            $version\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$architecture`       $architecture\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$bucket`             $bucket\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$bucketsdir`         $bucketsdir\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$persist_dir`        $persist_dir\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$global`             $global\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$env:SCOOP`          $env:SCOOP\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$dir`                $dir\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$extract_dir`        $extract_dir\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$manifest_path`      $manifest_path\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$cache_dir`          $cache_dir\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$config_dir`         $config_dir\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$env:SCOOP_HOME`     $env:SCOOP_HOME\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$app`                $app\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$env:AppData`        $env:AppData\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$env:LocalAppData`   $env:LocalAppData\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$pwd`                $pwd\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$PSScriptRoot`       $PSScriptRoot\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$MyInvocation`       $MyInvocation\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$manifest`           $manifest\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$url`                $url\" -ForegroundColor DarkCyan",
+        "Write-Host '------------------------------------'",
+        ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
+        "Write-Test"
+    ],
+
+    "installer": {
+        "script": [
+            "Write-Host '--- Stage: Installer ---' -ForegroundColor Green",
+            "Write-Host '📦 Files extracted to the installation directory $dir :' -ForegroundColor Cyan",
+            "Get-ChildItem -Path $dir | ForEach-Object { Write-Host \"  • $($_.Name)\" -ForegroundColor DarkGray }",
+            "Write-Host ''"
+        ]
+    },
+
+    "post_install": [
+        "Write-Host '--- Stage: Post-Install ---' -ForegroundColor Green",
+        "Write-Host '✅ Post-installation environment and paths:' -ForegroundColor Cyan",
+        "Write-Host \"  • `$env:PATH`       $env:PATH\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$dir`            $dir\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$(Get-Location)` $(Get-Location)\" -ForegroundColor DarkCyan",
+        "Write-Host ''"
+    ],
+
+    "pre_uninstall": [
+        "Write-Host \"--- Stage: Pre-Uninstall ---\" -ForegroundColor Yellow",
+        "Write-Host \"⚠️ Preparing to uninstall application from: $dir \" -ForegroundColor Cyan",
+        "Write-Host \"  • `$app`     $app\" -ForegroundColor DarkCyan",
+        "Write-Host \"  • `$dir`     $dir\" -ForegroundColor DarkCyan",
+        "Write-Host ''"
+    ],
+
+    "uninstaller": {
+        "script": [
+            "Write-Host '--- Stage: Uninstaller ---' -ForegroundColor Yellow",
+            "Write-Host '🗑️ Files present in the directory before removal:' -ForegroundColor Cyan",
+            "Get-ChildItem -Path $dir | ForEach-Object { Write-Host \"  • $($_.Name)\" -ForegroundColor DarkGray }",
+            "Write-Host ''"
+        ]
+    },
+
+    "post_uninstall": [
+        "Write-Host '--- Stage: Post-Uninstall ---' -ForegroundColor Yellow",
+        "Write-Host '✨ Post-uninstallation cleanup complete.' -ForegroundColor Cyan",
+        "Write-Host \"  • `$dir`    $dir\" -ForegroundColor DarkCyan",
+        "Write-Host ''"
+    ]
+}
