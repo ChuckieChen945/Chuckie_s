@@ -1,12 +1,17 @@
 {
     "##": "TODO:静默安装",
-    "version": "7.55.1.101",
+    "version": "7.57.0.102",
     "description": "百度网盘。Baidu Netdisk for windows.",
     "homepage": "https://pan.baidu.com/download",
     "license": "Unknown",
-    "url": "https://issuepcdn.baidupcs.com/issue/netdisk/yunguanjia/BaiduNetdisk_7.55.1.101.exe#/setup.exe",
-    "hash": "2eada51be73a103e48268d0b9f7dcd1772b26c9696afea2d2ec5eb7934a7a715",
-    "shortcuts": [["BaiduNetdisk.exe", "百度网盘"]],
+    "url": "https://issuepcdn.baidupcs.com/issue/netdisk/yunguanjia/BaiduNetdisk_7.57.0.102.exe#/setup.exe",
+    "hash": "3eb10afda6cc459e4989caf6ef7ee6f8946c28f96e999f7a35af73649fa48089",
+    "shortcuts": [
+        [
+            "BaiduNetdisk.exe",
+            "百度网盘"
+        ]
+    ],
     "installer": {
         "file": "setup.exe",
         "args": "/S"
