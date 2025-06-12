@@ -15,5 +15,18 @@
             "Invoke-ExternalCommand $uninstall -RunAs -ArgumentList @('/S')"
         ]
     },
-    "##": "https://github.com/abgox/abgo_bucket/blob/main/bucket/BaiduTranslate.json"
+    "checkver": {
+        "script": [
+            ". ([scriptblock]::Create((Invoke-RestMethod https://raw.githubusercontent.com/abgox/abyss/refs/heads/main/bin/utils.ps1)))",
+            "$InstallerInfo = A-Get-InstallerInfoFromWinget 'Baidu.BaiduTranslate' 'exe'",
+            "\"ver:$($InstallerInfo.PackageVersion);\"",
+            "\"x64:$($InstallerInfo.x64_machine.InstallerUrl);\"",
+            "\"x86:$($InstallerInfo.x86_machine.InstallerUrl);\"",
+            "\"arm64:$($InstallerInfo.arm64_machine.InstallerUrl);\""
+        ],
+        "regex": "ver:(?<version>[^;]+)(?:; x64:(?<x64>[^;]*))?(?:; x86:(?<x86>[^;]*))?(?:; arm64:(?<arm64>[^;]*))?"
+    },
+    "autoupdate": {
+        "url": "https://fanyiapp.cdn.bcebos.com/fanyi-client/pkg/win/$version/百度翻译_Setup_$version.exe#/setup.exe"
+    }
 }
